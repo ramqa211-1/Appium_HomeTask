@@ -1,0 +1,14 @@
+
+.idea/blue-nile-automation.iml
+FailedTestsScreenshots
+debug.log
+/target/
+/src/main/java/com.javascript.testkit/base/BaseTest.java
+/src/main/java/com.javascript.testkit/base/BrowserDriverFactory.java
+/src/main/resources/chromedriver.exe
+BaseTest.java
+BrowserDriverFactory.java
+.idea/*
+TestKit.iml
+allure-results
+/src/main/java/com/bluenile/testkit/optionCucumber/

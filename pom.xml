@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>Blue_Nile</groupId>
+    <artifactId>TestKit</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <java.version>17</java.version>
+        <webdrivermanager.version>5.4.1</webdrivermanager.version>
+        <testng.version>7.1.0</testng.version>
+        <selenium.version>3.141.59</selenium.version>
+        <poi.version>4.1.0</poi.version>
+        <poi-ooxml.version>4.1.0</poi-ooxml.version>
+        <commons-io.version>2.6</commons-io.version>
+        <ghostdriver.version>2.1.0</ghostdriver.version>
+        <htmlunit-driver.version>2.33.0</htmlunit-driver.version>
+        <extentreports.version>5.0.9</extentreports.version>
+        <slf4j-api.version>1.7.5</slf4j-api.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <!-- https://github.com/detro/ghostdriver -->
+        <dependency>
+            <groupId>com.github.detro</groupId>
+            <artifactId>ghostdriver</artifactId>
+            <version>${ghostdriver.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <version>${htmlunit-driver.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <build>
+
+        <plugins>
+
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- https://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
