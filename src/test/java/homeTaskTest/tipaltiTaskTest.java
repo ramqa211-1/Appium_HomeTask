@@ -11,11 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.bluenile.testkit.base.BrowserDriverFactory.getDriver;
-import static com.bluenile.testkit.locators.YoutubeLocators.*;
+import static com.bluenile.testkit.locators.TipaltiLocators.*;
 
-public class youtubeTaskTest extends YoutubePage {
+public class tipaltiTaskTest extends YoutubePage {
 
-    //locators
 
     public static By hamburgerButton = By.xpath("//*[text()='Menu']");
     public static By menuListOptions = (By.xpath("//ul/li/a"));
@@ -26,8 +25,9 @@ public class youtubeTaskTest extends YoutubePage {
     public static By sendButton = (By.cssSelector("[type*='submit']"));
 
 
+
     @Test(groups = {})
-    public void youtubeTest() throws Exception {
+    public void tipaltiSiteTest() throws Exception {
         String tipaltiUrl = "http://qa-tipalti-assignment.tipalti.com/index.html";
         log(Status.INFO, "Navigating to tipalti site");
         openUrl(tipaltiUrl);
