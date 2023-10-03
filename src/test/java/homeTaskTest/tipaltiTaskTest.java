@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.bluenile.testkit.base.BrowserDriverFactory.getDriver;
-import static com.bluenile.testkit.locators.TipaltiLocators.*;
 
 public class tipaltiTaskTest extends YoutubePage {
 
