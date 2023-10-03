@@ -1,5 +1,6 @@
 package homeTaskTest;
 
+import com.bluenile.testkit.pages.desktop.Dashboard;
 import com.github.javafaker.Faker;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
@@ -13,14 +14,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class sciPlayTaskTest {
+public class sciPlayTaskTest extends Dashboard {
 
     private static final Faker faker = new Faker();
     private static final Random random = new Random();
 
     @Test(groups = {})
     public void generateMockFileOfGamePlayData() throws Exception {
-        String mockDataFile="gameplay.csv";
+        String mockDataFile = "test-output/sciPlayDateFiles/gameplay.csv";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(mockDataFile))) {
             writer.write("Player ID,Game Session ID,Score,Items Collected,Enemies Defeated,Timestamp\n");
 
@@ -46,7 +47,7 @@ public class sciPlayTaskTest {
 
     @Test(groups = {})
     public void validateGamePlayDataFromTheMockFile() throws Exception {
-        final String mockDataFile = "gameplay.csv";
+        final String mockDataFile = "test-output/sciPlayDateFiles/gameplay.csv";
         final int MAX_ITEMS_COLLECTED = 100;  // Adjust this value according to game's specified maximum
 
 
@@ -102,8 +103,8 @@ public class sciPlayTaskTest {
 
     @Test(groups = {})
     public void cleanAndValidateGamePlayDataFromTheMockFile() throws Exception {
-        final String mockDataFile = "gameplay.csv";
-        final String REPORT_FILE_PATH = "validation_report.csv";
+        final String mockDataFile = "test-output/sciPlayDateFiles/gameplay.csv";
+        final String REPORT_FILE_PATH = "test-output/sciPlayDateFiles/validation_report.csv";
         final int MAX_ITEMS_COLLECTED = 100;
 
         // ANSI escape code for red text.
