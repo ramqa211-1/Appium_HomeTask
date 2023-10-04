@@ -15,12 +15,12 @@ import java.util.*;
 
 public class Dashboard {
 
-        private String playerId;
-        private String gameSessionId;
-        private int score;
-        private int itemsCollected;
-        private int enemiesDefeated;
-        private Date timestamp;
+    private String playerId;
+    private String gameSessionId;
+    private int score;
+    private int itemsCollected;
+    private int enemiesDefeated;
+    private Date timestamp;
 
     public String getPlayerId() {
         return playerId;
@@ -30,33 +30,21 @@ public class Dashboard {
         this.playerId = playerId;
     }
 
-//    public String getGameSessionId() {
-//        return gameSessionId;
-//    }
 
     public void setGameSessionId(String gameSessionId) {
         this.gameSessionId = gameSessionId;
     }
 
-//    public int getScore() {
-//        return score;
-//    }
 
     public void setScore(int score) {
         this.score = score;
     }
-//
-//    public int getItemsCollected() {
-//        return itemsCollected;
-//    }
+
 
     public void setItemsCollected(int itemsCollected) {
         this.itemsCollected = itemsCollected;
     }
 
-//    public int getEnemiesDefeated() {
-//        return enemiesDefeated;
-//    }
 
     public void setEnemiesDefeated(int enemiesDefeated) {
         this.enemiesDefeated = enemiesDefeated;
@@ -145,6 +133,7 @@ public class Dashboard {
                 false
         );
     }
+
     public static void displayChart(JFreeChart chart) {
         ChartPanel chartPanel = new ChartPanel(chart);
         JFrame frame = new JFrame();

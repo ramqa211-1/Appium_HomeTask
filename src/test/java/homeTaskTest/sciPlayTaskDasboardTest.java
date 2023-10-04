@@ -9,7 +9,7 @@ public class sciPlayTaskDasboardTest extends Dashboard {
 
     public static void main(String[] args)   {
         try {
-            String filePath = "gameplay.csv";
+            String filePath = "test-output/sciPlayDateFiles/gameplay.csv";
 
             Dashboard dashboard = new Dashboard(); // Assuming Dashboard is the name of the class that contains methods like parseCsv, etc.
             List<Dashboard> dataList = dashboard.parseCsv(filePath);
