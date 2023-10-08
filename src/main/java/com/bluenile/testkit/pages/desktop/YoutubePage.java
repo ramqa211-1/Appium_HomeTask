@@ -9,7 +9,7 @@ import java.util.List;
 
 import static com.bluenile.testkit.base.BrowserDriverFactory.getDriver;
 import static com.bluenile.testkit.locators.GlobalLocators.*;
-import static com.bluenile.testkit.locators.YoutubeLocators.*;
+import static com.bluenile.testkit.locators.ShopSiteLocators.*;
 
 public class YoutubePage extends BasePageObject {
 
