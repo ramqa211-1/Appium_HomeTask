@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class youtubeTaskTest extends BaseTest {
 
         @Test(groups = {})
-        public void facebookTestLogin() throws Exception {
+        public void instgramLoginTest() throws Exception {
             String username="";
             String password="";
                 // Identify elements and perform login actions
