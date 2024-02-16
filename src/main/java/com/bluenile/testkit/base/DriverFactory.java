@@ -2,41 +2,54 @@ package com.bluenile.testkit.base;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class DriverFactory {
-    private static DriverFactory instance;
-    private ThreadLocal<AndroidDriver<MobileElement>> driverThreadLocal = new ThreadLocal<>();
+import java.net.MalformedURLException;
+import java.net.URL;
 
-    private DriverFactory() {
-        // private constructor to enforce Singleton pattern
-    }
 
-    public static DriverFactory getInstance() {
-        if (instance == null) {
-            synchronized (DriverFactory.class) {
-                if (instance == null) {
-                    instance = new DriverFactory();
+    public class DriverFactory {
+        private static DriverFactory instance;
+        private ThreadLocal<AndroidDriver<MobileElement>> driverThreadLocal = new ThreadLocal<>();
+
+        private DriverFactory() {
+            // private constructor to enforce Singleton pattern
+        }
+
+        public static DriverFactory getInstance() {
+            if (instance == null) {
+                synchronized (DriverFactory.class) {
+                    if (instance == null) {
+                        instance = new DriverFactory();
+                    }
                 }
             }
+            return instance;
         }
-        return instance;
+
+        public AndroidDriver<MobileElement> getDriver(DesiredCapabilities capabilities) {
+            if (driverThreadLocal.get() == null) {
+                initializeDriver(capabilities);
+            }
+            return driverThreadLocal.get();
+        }
+
+        private void initializeDriver(DesiredCapabilities capabilities) {
+            try {
+                AndroidDriver<MobileElement> driverInstance = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                driverThreadLocal.set(driverInstance);
+            } catch (MalformedURLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        public void quitDriver() {
+            if (driverThreadLocal.get() != null) {
+                driverThreadLocal.get().quit();
+                driverThreadLocal.remove();
+            }
+        }
     }
 
-    public AndroidDriver<MobileElement> getDriver() {
-        if (driverThreadLocal.get() == null) {
-            initializeDriver();
-        }
-        return driverThreadLocal.get();
-    }
-
-    private void initializeDriver() {
-        // You can initialize the driver here if needed
-    }
-
-    public void quitDriver() {
-        if (driverThreadLocal.get() != null) {
-            driverThreadLocal.get().quit();
-            driverThreadLocal.remove();
-        }
-    }
-}
