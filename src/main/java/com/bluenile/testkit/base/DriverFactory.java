@@ -1,10 +1,7 @@
 package com.bluenile.testkit.base;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -14,7 +11,6 @@ import java.net.URL;
         private ThreadLocal<AndroidDriver<MobileElement>> driverThreadLocal = new ThreadLocal<>();
 
         private DriverFactory() {
-            // private constructor to enforce Singleton pattern
         }
 
         public static DriverFactory getInstance() {

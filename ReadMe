@@ -6,5 +6,6 @@ To run my tests successfully, the following dependencies need to be installed:
 - Maven
 - Java 17
 - An integrated development environment (IDE) such as IntelliJ or Eclipse.
+- need up and running the appium server on port '4723'
 
 For reporting purposes, I use the 'Allure' reporting tool. After running the tests from the XML file, I open the command prompt (CMD) and execute the 'allure serve' command. This action generates an HTML page containing the test report, which is automatically opened for review.
