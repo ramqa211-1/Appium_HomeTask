@@ -1,6 +1,7 @@
 package homeTaskTest;
 
 import com.bluenile.testkit.base.BaseTest;
+import com.bluenile.testkit.locators.InstgramAppLocators;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -53,31 +54,29 @@ public class youtubeTaskTest extends BaseTest {
 
     @Test(groups = {})
     public void instgramLoginTest() throws Exception {
+        InstgramAppLocators instgramAppLocators=new InstgramAppLocators();
         String emailFieldText = "israelIsraeli";
-
-        AndroidElement profileButtonBottomMenu = (AndroidElement) driver.findElementById("com.instagram.android:id/tab_avatar");
+        AndroidElement profileButtonBottomMenu = (AndroidElement) driver.findElement(instgramAppLocators.profileButtonBottomMenu);
         tapElement(profileButtonBottomMenu);
-        AndroidElement menuSide = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Options\"]");
+        AndroidElement menuSide = (AndroidElement) driver.findElement(instgramAppLocators.menuSide);
         tapElement(menuSide);
-        AndroidElement settingsPrivacyButton = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Settings and privacy\"]");
+        AndroidElement settingsPrivacyButton = (AndroidElement) driver.findElement(instgramAppLocators.settingsPrivacyButton);
         String settingsPrivacyButtonText= getTextFromElement(settingsPrivacyButton);
         assertContains(settingsPrivacyButtonText,"Settings and privacy");
         tapElement(settingsPrivacyButton);
         swipeDown();
         swipeDown();
-        AndroidElement logoutAllAccounts = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Log out all accounts. Logs out all accounts\"]");
+        AndroidElement logoutAllAccounts = (AndroidElement) driver.findElement(instgramAppLocators.logoutAllAccounts);
         tapElement(logoutAllAccounts);
-        AndroidElement logOut = (AndroidElement) driver.findElementById("com.instagram.android:id/bb_primary_action_container");
+        AndroidElement logOut = (AndroidElement) driver.findElement(instgramAppLocators.logOut);
         tapElement(logOut);
-        AndroidElement logInAnotherAccount = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Log into another account\"]/android.view.ViewGroup");
+        AndroidElement logInAnotherAccount = (AndroidElement) driver.findElement(instgramAppLocators.logInAnotherAccount);
         tapElement(logInAnotherAccount);
-        AndroidElement emailField = (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@text=\"ramivelestal\"]");
+        AndroidElement emailField = (AndroidElement) driver.findElement(instgramAppLocators.emailField);
         tapElement(emailField);
         emailField.sendKeys(emailFieldText);
-
-        AndroidElement logInButton = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Log in\"]/android.view.ViewGroup");
+        AndroidElement logInButton = (AndroidElement) driver.findElement(instgramAppLocators.logInButton);
         tapElement(logInButton);
-
     }
 }
 

@@ -4,18 +4,14 @@ import org.openqa.selenium.By;
 
 public class InstgramAppLocators {
 
-
-    public static By searchField = By.id("search-input");
-    public static By mirrorGlassIconButton = By.id("search-icon-legacy");
-    public static By filterButton = By.cssSelector("[aria-label='Search filters']");
-    public static By videoButton = By.xpath("//*[text()='Video']");
-    public static By ViewCountButton = By.xpath("//*[text()='View count']");
-    public static By specificVideoLink = By.cssSelector("[href*='watch?v=ybXrrTX3LuI']");
-    public static By userChannelName = By.xpath("//a[contains(@href, '@nikki7993') and @dir='auto']");
-    public static By skidAdButton = By.id("ad-text:m");
-    public static By showMoreButton = By.id("expand");
-    public static By artistName =  By.xpath("//a[@href='/channel/UCgVq3HlmkLoh9CFt9i7Syug' and @dir='auto']");
-
+    public static By profileButtonBottomMenu = By.id("com.instagram.android:id/tab_avatar");
+    public static By menuSide = By.xpath("//android.widget.Button[@content-desc=\"Options\"]");
+    public static By settingsPrivacyButton = By.xpath("//android.widget.Button[@content-desc=\"Settings and privacy\"]");
+    public static By logoutAllAccounts = By.xpath("//android.widget.Button[@content-desc=\"Log out all accounts. Logs out all accounts\"]");
+    public static By logOut = By.id("com.instagram.android:id/bb_primary_action_container");
+    public static By logInAnotherAccount = By.xpath("//android.widget.Button[@content-desc=\"Log into another account\"]/android.view.ViewGroup");
+    public static By emailField = By.xpath("//android.widget.EditText[@text=\"ramivelestal\"]");
+    public static By logInButton = By.xpath("//android.widget.Button[@content-desc=\"Log in\"]/android.view.ViewGroup");
 
 
 }
