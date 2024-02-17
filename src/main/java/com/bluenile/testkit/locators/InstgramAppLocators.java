@@ -2,7 +2,7 @@ package com.bluenile.testkit.locators;
 
 import org.openqa.selenium.By;
 
-public class YoutubeLocators {
+public class InstgramAppLocators {
 
 
     public static By searchField = By.id("search-input");
