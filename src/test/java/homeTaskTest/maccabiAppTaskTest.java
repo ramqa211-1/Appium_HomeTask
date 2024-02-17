@@ -30,6 +30,7 @@ public class maccabiAppTaskTest extends BaseTest {
         tapElement(logoutAllAccounts);
         AndroidElement logOut = (AndroidElement) driver.findElement(instgramAppLocators.logOut);
         tapElement(logOut);
+        Thread.sleep(10000);
         AndroidElement logInAnotherAccount = (AndroidElement) driver.findElement(instgramAppLocators.logInAnotherAccount);
         tapElement(logInAnotherAccount);
         AndroidElement emailField = (AndroidElement) driver.findElement(instgramAppLocators.emailField);
