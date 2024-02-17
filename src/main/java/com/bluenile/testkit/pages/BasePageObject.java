@@ -1,5 +1,4 @@
 package com.bluenile.testkit.pages;
-
 import com.bluenile.testkit.base.BaseTest;
 import com.bluenile.testkit.locators.InstagramAppLocators;
 import io.appium.java_client.TouchAction;
@@ -11,30 +10,20 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-
 import java.time.Duration;
-
 
 public class BasePageObject extends BaseTest {
     static InstagramAppLocators instgramAppLocators = new InstagramAppLocators();
 
     public static void tapElement(AndroidElement element) {
-        // Set your desired timeout for waiting
         Duration timeout = Duration.ofSeconds(10);
-
-        // Explicitly wait for the element to be visible
         new WebDriverWait(driver, 15000)
                 .until(ExpectedConditions.visibilityOf(element));
-
-        // Perform the tap with a wait action
         new TouchAction(driver)
                 .tap(TapOptions.tapOptions().withElement(ElementOption.element(element)))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
                 .perform();
     }
-
-
 
     public static void swipeDown() {
         int height = driver.manage().window().getSize().getHeight();
@@ -50,12 +39,6 @@ public class BasePageObject extends BaseTest {
                 .release()
                 .perform();
     }
-
-    public static void sendTextToField( String text, String elementId) {
-        AndroidElement textField = driver.findElementById(elementId);
-        textField.sendKeys(text);
-    }
-
 
     public static String getTextFromElement(AndroidElement element) {
         return element.getText();
