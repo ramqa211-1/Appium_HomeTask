@@ -74,7 +74,12 @@
             <artifactId>htmlunit-driver</artifactId>
             <version>${htmlunit-driver.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.8</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.aventstack</groupId>
@@ -116,6 +121,15 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.13.8</version>
+                <configuration>
+                    <reportVersion>2.13.8</reportVersion>
+                    <!-- You can customize other configuration options here -->
                 </configuration>
             </plugin>
 
