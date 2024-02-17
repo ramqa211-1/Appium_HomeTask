@@ -12,6 +12,8 @@ public class InstgramAppLocators {
     public static By logInAnotherAccount = By.xpath("//android.widget.Button[@content-desc=\"Log into another account\"]/android.view.ViewGroup");
     public static By emailField = By.xpath("//android.widget.EditText[@text=\"ramivelestal\"]");
     public static By logInButton = By.xpath("//android.widget.Button[@content-desc=\"Log in\"]/android.view.ViewGroup");
+    public static By storyHighlightsHeader = By.id("com.instagram.android:id/tray_header");
+
 
 
 }

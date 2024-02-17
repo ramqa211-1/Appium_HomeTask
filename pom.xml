@@ -128,7 +128,7 @@
                     <suiteXmlFiles>
                         <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
                         <!--suppress UnresolvedMavenProperty -->
-                        <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>resource/TestSuites/maccabiTask.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
