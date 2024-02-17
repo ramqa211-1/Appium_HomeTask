@@ -1,10 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SingleTestSuite">
+
     <test name="SingleTest">
         <classes>
             <class name="homeTaskTest.maccabiAppTaskTest">
                 <methods>
-                    <include name="instgramLoginTest"/>
+                    <include name="instagramLoginTest"/>
+                    <include name="instagramInValidLoginTest"/>
                 </methods>
             </class>
         </classes>
