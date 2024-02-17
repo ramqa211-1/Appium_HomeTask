@@ -44,6 +44,9 @@ public class maccabiAppTaskTest extends BaseTest {
         tapElement(logInButton);
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Description ("check app log in if failed, swipe action , get text. assert text and tap action")
+    @Story("test verification of failed login")
     @Test(groups = {})
     public void instagramInValidLoginTest() throws Exception {
         InstagramAppLocators instgramAppLocators=new InstagramAppLocators();
