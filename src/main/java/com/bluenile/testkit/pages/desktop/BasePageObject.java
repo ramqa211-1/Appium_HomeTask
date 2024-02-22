@@ -101,7 +101,7 @@ public class BasePageObject extends BaseTest {
                     dr.findElement(locator).getText().contains(textToWait[0])
             );
         }
-        lambdaWait(locator);
+   
         textPage = getDriver().findElement(locator).getText();
         if (getDriver().findElements(locator).isEmpty()) {
             return "THE ELEMENT IS EMPTY";
@@ -110,8 +110,7 @@ public class BasePageObject extends BaseTest {
         }
     }
 
-    public static void typeTextOnTextFieldGlobal(By locator, String textToType )  {
-        lambdaWait(locator);
+    public static void typeTextOnTex   lambdaWait(locator);
         WebElement element = getDriver().findElement(locator);
         Actions actions = new Actions(getDriver());
         actions.moveToElement(element).click().sendKeys(textToType).build().perform();
@@ -125,7 +124,7 @@ public class BasePageObject extends BaseTest {
     //** Get current URL core method with lambda wait for string contains in URL **//
     public static String getCurrentUrl(String... lambdaExpectedTxt) {
         if (lambdaExpectedTxt.length > 0) {
-            lambdaWaitUrl(lambdaExpectedTxt[0]);
+        
             String currentURL = (String) ((JavascriptExecutor) BrowserDriverFactory.getDriver()).executeScript("return window.location.href");
             log(Status.INFO, "Get Current URL: " + currentURL);
             return currentURL;
@@ -141,7 +140,7 @@ public class BasePageObject extends BaseTest {
     //This can save up lines of code in the tests - instead of writing "Thread.sleep(x)"
     public static void switchToFrame(By frameLocator, int... optionalSleep) throws InterruptedException {
         log(Status.INFO, "Switch To Frame " + frameLocator);
-        lambdaWait(frameLocator, 30);
+    
         getDriver().switchTo().frame(find(frameLocator));
         // Perform optional sleep after switching to the desired frame if parameter is passed
         if (optionalSleep.length > 0) {
@@ -155,14 +154,12 @@ public class BasePageObject extends BaseTest {
 
 
     public static String FindElementsGetText(By locator, int num, int... timeout) {
-        lambdaWait(locator, timeout);
         log(Status.INFO, "Clicking on element by locator: " + locator);
         WebElement text = BrowserDriverFactory.getDriver().findElements(locator).get(num);
         return text.getText();
     }
 
     public static void clickFindElements(By locator, int num) {
-        lambdaWait(locator);
         log(Status.INFO, "Clicking on element by locator: " + locator);
         getDriver().findElements(locator).get(num).click();
     }
@@ -239,13 +236,11 @@ public class BasePageObject extends BaseTest {
 
     public static WebElement getElement(By locator, int... timeOut) {
         WebElement element;
-        lambdaWait(locator, timeOut);
         element = getDriver().findElement(locator);
         return element;
     }
 
     public static void JSClickLocator(By locator, int... timeout) {
-        lambdaWait(locator, timeout);
         WebElement element = getDriver().findElement(locator);
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("arguments[0].click();", element);
@@ -253,12 +248,12 @@ public class BasePageObject extends BaseTest {
 
 
     public static void sendText(By locator, String text, int... timeout) {
-        BasePageObject.lambdaWait(locator, timeout);
+    
         getDriver().findElement(locator).sendKeys(text);
     }
 
     public static void overwriteWebFieldText(By fieldElement, String stringToSend, int... timeOut) {
-        lambdaWait(fieldElement, timeOut);
+     
         WebDriverWait wait = new WebDriverWait(getDriver(), 10); // 10 seconds timeout
         wait.until(ExpectedConditions.elementToBeClickable(fieldElement));
 
@@ -269,14 +264,14 @@ public class BasePageObject extends BaseTest {
     }
 
     public static void hitEnter(By locator, int... timeOut) {
-        lambdaWait(locator, timeOut);
+    
         getElement(locator).sendKeys(Keys.RETURN);
     }
 
     //** SCROLL TO ELEMENT CORE METHOD **//
     public static void scrollToElementAction(By locator, String... textToWait) {
         Actions actions = new Actions(getDriver());
-        lambdaWait(locator);
+     
         try {
             if (textToWait.length > 0) {
                 WebDriverWait mobile = new WebDriverWait(getDriver(), 30);
@@ -329,71 +324,7 @@ public class BasePageObject extends BaseTest {
         }
     }
 
-    public static void lambdaWait(By elementCondition, int... timeout) {
-        WebDriverWait wait = new WebDriverWait(BrowserDriverFactory.getDriver(), timeout.length > 0 ? timeout[0] : 10);
-        String conditionDescription = "element condition: " + elementCondition.toString();
-        try {
-            wait.withMessage("Timeout occurred while waiting for " + conditionDescription)
-                    .ignoring(StaleElementReferenceException.class)
-                    .until((WebDriver dr) -> {
-                        WebElement element = dr.findElement(elementCondition);
-                        List<WebElement> elements = dr.findElements(elementCondition);
-                        String currentUrl = dr.getCurrentUrl();
-                        String readyState = (String) ((JavascriptExecutor) dr).executeScript("return document.readyState");
-                        long loadEventEnd = (long) ((JavascriptExecutor) dr).executeScript("return window.performance.timing.loadEventEnd");
-
-                        return (!elements.isEmpty() || element.isDisplayed())
-                                && currentUrl != null
-                                && "complete".equals(readyState)
-                                && loadEventEnd > 0;
-                    });
-        } catch (TimeoutException e) {
-            try {
-                System.out.println("Waiting 2.5 sec to element before failing");
-                sleep(2500);
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
-            throw new TimeoutException("Timeout occurred while waiting for " + conditionDescription + " on lambda method ", e);
-        }
-    }
-
-    public static void lambdaWaitUrl(String urlString, int... timeout) {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        int timeoutParam = 10;
-        if (timeout.length > 0) {
-            timeoutParam = timeout[0];
-        }
-        try {
-            WebDriverWait mobile = (WebDriverWait) new WebDriverWait(getDriver(), timeoutParam).pollingEvery(Duration.ofSeconds(2));
-            mobile.until((WebDriver dr) ->
-                    dr.getCurrentUrl().contains(urlString)
-                            && js.executeScript("return document.readyState").equals("complete"));
-        } catch (Exception e) {
-            WebDriverWait mobile = new WebDriverWait(getDriver(), timeoutParam);
-            mobile.until((WebDriver dr) ->
-                    dr.getCurrentUrl().contains(urlString)
-                            && js.executeScript("return document.readyState").equals("complete"));
-        }
-    }
-
-
-    public static void lambdaForString(String stringToWait, int... timeout) {
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) BrowserDriverFactory.getDriver();
-        // Get all the text from the page using JavaScript
-        String pageText = (String) jsExecutor.executeScript("return document.body.innerText");
-        int timeoutParam = 25;
-        if (timeout.length > 0) {
-            timeoutParam = timeout[0];
-        }
-        try {
-            WebDriverWait mobile = (WebDriverWait) new WebDriverWait(BrowserDriverFactory.getDriver(), timeoutParam).pollingEvery(Duration.ofMillis(500));
-            mobile.until((WebDriver dr) ->
-                    pageText.contains(stringToWait)
-            );
-        } catch (Exception e) {
-            //DO NOTHING
-        }
-    }
+  
+  
 
 }
