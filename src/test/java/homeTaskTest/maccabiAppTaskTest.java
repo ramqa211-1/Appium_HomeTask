@@ -65,6 +65,7 @@ public class maccabiAppTaskTest extends BaseTest {
         assertContains(errorMessageLoginText,"Enter your password to log in");
     }
     //
+    //
 }
 
 
