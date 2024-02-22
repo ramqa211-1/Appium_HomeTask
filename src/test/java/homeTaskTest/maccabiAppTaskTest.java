@@ -64,6 +64,7 @@ public class maccabiAppTaskTest extends BaseTest {
         String errorMessageLoginText= getTextFromElement(errorMessageLogin);
         assertContains(errorMessageLoginText,"Enter your password to log in");
     }
+    //
 }
 
 
